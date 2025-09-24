@@ -10,8 +10,7 @@ namespace Hospital.domain.ports
     internal interface MedicalHistoryPorts
     {
         public List<MedicalHistory> GetMedicalHistories();
-        public void AddMedicalHistory();
-        public void UpdateMedicalHistory();
+        public void AddMedicalHistory(MedicalHistory medicalHistory);
         public void DeleteMedicalHistory();
     }
 }

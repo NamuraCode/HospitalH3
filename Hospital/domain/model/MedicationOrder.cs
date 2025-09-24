@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class MedicationOrder : Item
+    internal class MedicationOrder : Order
     {
         public required Medication Medicamento { get; set; }
         public required int Quantity { get; set; }

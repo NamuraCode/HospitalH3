@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital.domain.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,10 @@ namespace Hospital.domain.ports
 {
     internal interface AppointmentSchedulePorts
     {
-        public void ScheduleAppointment();
-        public void CancelAppointment();
+        public bool FindAppointmentByDoctorAndTime(int doctorId, DateTime dateAppointment);
+        public List<Appointment> GetAppointmentsByPatient(int patientId);
+        public void ScheduleAppointment(Appointment appointment);
+        public void CancelAppointment(int patientId, int doctorId);
         public void UpdateAppointment();
     }
 }

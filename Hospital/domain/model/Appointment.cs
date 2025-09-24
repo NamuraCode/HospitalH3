@@ -8,11 +8,10 @@ namespace Hospital.domain.model
 {
     internal class Appointment
     {
+        public int Id { get; set; }
         public required Patient Patient { get; set; }
         public required User Doctor { get; set; }
         public DateTime DateAdmission { get; set; }
         public DateTime DateEnd { get; set; }
-        public required VitalStatistics VitalStatistics { get; set; }
-        public required string ReasonForConsultation { get; set; }
     }
 }

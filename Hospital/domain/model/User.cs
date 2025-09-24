@@ -11,5 +11,6 @@ namespace Hospital.domain.model
         public required string Role { get; set; }
         public required string NameUser { get; set; }
         public required string Password { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital.domain.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Hospital.domain.ports
 {
     internal interface InvoicePorts
     {
-        public void GenerateInvoice()
+        public void GenerateInvoice(Invoice invoice)
         {
             // generar factura
         }
@@ -16,9 +17,10 @@ namespace Hospital.domain.ports
         {
             // enviar factura
         }
-        public void GetInvoiceByIdUser()
+        public List<Invoice> GetInvoicesByIdUser(int userId)
         {
-            // obtener detalles de la factura por id de usuario
+            // reemplazar por la de la base de datos
+            return new List<Invoice>();
         }
     }
 }

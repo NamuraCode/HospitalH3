@@ -40,14 +40,26 @@ namespace Hospital.domain.services
             }
         }
 
-        public void UpdateUser()
+        public void UpdateUser(User user)
         {
-            // Lógica para actualizar un usuario
+            bool userExist = userPorts.FindUserById(userId: user.Id);
+            if (!userExist)
+            {
+                throw new InvalidOperationException($"El usuario con ID {user.Id} no existe.");
+            }
+            userPorts.UpdateUser(user);
         }
 
-        public void DeleteUser()
+        public void DeleteUser(User user)
         {
-            // Lógica para eliminar un usuario
+            bool userExist = userPorts.FindUserById(userId: user.Id);
+            if(userExist) {
+                userPorts.DeleteUser(user.Id);
+            }
+            else
+            {
+                throw new InvalidOperationException($"El usuario con ID {user.Id} no existe.");
+            }
         }
     }
 }

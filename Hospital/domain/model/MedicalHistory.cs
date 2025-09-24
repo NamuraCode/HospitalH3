@@ -14,5 +14,7 @@ namespace Hospital.domain.model
         public required List<ProcedureOrder>? Procedures { get; set; }
         public required List<DiagnosticAssistance>? DiagnosticAssistance { get; set; }
         public required Invoice? Invoice { get; set; }
+        public required VitalStatistics VitalStatistics { get; set; }
+        public required string ReasonForConsultation { get; set; }
     }
 }
