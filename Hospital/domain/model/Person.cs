@@ -15,6 +15,5 @@ namespace Hospital.domain.model
         public required DateTime DateBirth { get; set; }
         public required string Direction { get; set; }
         public required Contact EmergencyContact { get; set; }
-        public required string Role { get; set; }
     }
 }
