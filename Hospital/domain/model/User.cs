@@ -8,7 +8,6 @@ namespace Hospital.domain.model
 {
     internal class User : Person
     {
-        public required string Role { get; set; }
         public required string NameUser { get; set; }
         public required string Password { get; set; }
 
