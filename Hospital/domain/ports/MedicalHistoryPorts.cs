@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hospital.domain.model
+namespace Hospital.domain.ports
 {
-    internal class Item
+    internal interface MedicalHistoryPorts
     {
-        public required int Id { get; set; }
     }
 }

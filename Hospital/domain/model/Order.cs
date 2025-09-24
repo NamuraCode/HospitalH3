@@ -10,6 +10,5 @@ namespace Hospital.domain.model
     internal class Order
     {
         public required int Id { get; set; }
-        public required List<Item> Items { get; set; } = new List<Item>();
     }
 }

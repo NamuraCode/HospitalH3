@@ -8,7 +8,6 @@ namespace Hospital.domain.model
 {
     internal class Contact : Person
     {
-        public required User User { get ; set; }
         public required string Relation { get; set; }
     }
 }

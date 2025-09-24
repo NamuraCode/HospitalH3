@@ -10,5 +10,7 @@ namespace Hospital.domain.model
     {
         public required string Name { get; set; }
         public required string NumberPolicy { get; set; }
+        public required int StatusPolicy { get; set; }
+        public required DateTime ValidityPolicy { get; set; }
     }
 }

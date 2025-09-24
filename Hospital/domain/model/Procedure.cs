@@ -8,8 +8,9 @@ namespace Hospital.domain.model
 {
     internal class Procedure
     {
-        public required string Name { get; set; }
-        public required string Description { get; set; }
+        public required int IdProcedure { get; set; }
+        public required int Quantity { get; set; }
+        public required int frequency { get; set; }
 
     }
 }

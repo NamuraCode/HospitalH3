@@ -14,5 +14,6 @@ namespace Hospital.domain.model
         public required int DiastolicPressure { get; set; }
         public required int HeartRate { get; set; }
         public required double Temperature { get; set; }
+        public required int BloodOxygenLevel { get; set; }
     }
 }

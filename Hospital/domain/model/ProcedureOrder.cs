@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class ProcedureOrder : Item
+    internal class ProcedureOrder : Order
     {
         public required Procedure Procedure { get; set; }
     }

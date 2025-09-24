@@ -11,7 +11,11 @@ namespace Hospital.domain.model
     {
         public required Patient Patient { get; set; }
         public required User Doctor { get; set; }
-        public required string Diagnosis { get; set; }
-        public required int Price { get; set; }
+        public required HealthInsurance HealthInsurance { get; set; }
+        public required string Diagnostic { get; set; }
+        public required List<MedicationOrder> MedicationOrder { get; set; }
+        public required List<Procedure> Procedures { get; set; }
+        public required List<DiagnosticAssistance> DiagnosticAssistance { get; set; }
+        public required decimal TotalAmount { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class User
+    internal class User : Person
     {
         public required string Role { get; set; }
         public required string NameUser { get; set; }

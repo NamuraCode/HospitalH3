@@ -10,5 +10,6 @@ namespace Hospital.domain.model
     {
         public required Medication Medicamento { get; set; }
         public required int Quantity { get; set; }
+        public required string Frequency { get; set; }
     }
 }

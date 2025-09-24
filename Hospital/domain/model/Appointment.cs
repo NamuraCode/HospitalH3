@@ -10,9 +10,9 @@ namespace Hospital.domain.model
     {
         public required Patient Patient { get; set; }
         public required User Doctor { get; set; }
-        public required Procedure Procedure { get; set; }
-        public required Order Order { get; set; }
+        public DateTime DateAdmission { get; set; }
+        public DateTime DateEnd { get; set; }
         public required VitalStatistics VitalStatistics { get; set; }
-        public required string Observations { get; set; }
+        public required string ReasonForConsultation { get; set; }
     }
 }
