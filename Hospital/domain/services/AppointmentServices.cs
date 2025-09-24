@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hospital.domain.model;
+using Hospital.domain.ports;
 
-namespace Hospital.domain.ports
+namespace Hospital.domain.services
 {
-    internal interface SpecialistsPorts
+    internal class AppointmentServices
     {
-        public void FindBySpecialistId() {
-            // buscar especialista por id
-        }
+        private AppointmentSchedulePorts appointmentSchedulePorts;
+
         public void ScheduleAppointment()
         {
-            // agendar una cita
+            appointmentSchedulePorts.ScheduleAppointment();
         }
+
         public void CancelAppointment()
         {
-            // cancelar una cita
+
         }
         public void UpdateAppointment()
         {
-            // actualizar una cita
+
         }
+
+
     }
 }
