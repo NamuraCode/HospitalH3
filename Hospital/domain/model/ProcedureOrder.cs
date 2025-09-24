@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class ProcedureOrder
+    internal class ProcedureOrder : Item
     {
-        public Procedure Procedure { get; set; }
+        public required Procedure Procedure { get; set; }
     }
 }

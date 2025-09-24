@@ -9,7 +9,7 @@ namespace Hospital.domain.model
 {
     internal class Order
     {
-        public int Id { get; set; }
-        public List<Item> Items { get; set; } = new List<Item>();
+        public required int Id { get; set; }
+        public required List<Item> Items { get; set; } = new List<Item>();
     }
 }

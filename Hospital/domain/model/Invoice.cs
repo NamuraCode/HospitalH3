@@ -9,10 +9,9 @@ namespace Hospital.domain.model
 {
     internal class Invoice
     {
-        public Patient Patient { get; set; }
-        public User Doctor { get; set; }
-        public string Diagnosis { get; set; }
-
-        public int Price { get; set; }
+        public required Patient Patient { get; set; }
+        public required User Doctor { get; set; }
+        public required string Diagnosis { get; set; }
+        public required int Price { get; set; }
     }
 }

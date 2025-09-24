@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class User : Person
+    internal class User
     {
-        public string Role { get; set; }
-        public string NameUser { get; set; }
-        public string Password { get; set; }
+        public required string Role { get; set; }
+        public required string NameUser { get; set; }
+        public required string Password { get; set; }
     }
 }

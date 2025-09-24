@@ -8,6 +8,6 @@ namespace Hospital.domain.model
 {
     internal class Item
     {
-        public int Id { get; set; }
+        public required int Id { get; set; }
     }
 }

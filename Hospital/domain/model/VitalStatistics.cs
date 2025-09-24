@@ -8,11 +8,11 @@ namespace Hospital.domain.model
 {
     internal class VitalStatistics
     {
-        public double Weight { get; set; }
-        public double Height { get; set; }
-        public int SystolicPressure { get; set; }
-        public int DiastolicPressure { get; set; }
-        public int HeartRate { get; set; }
-        public double Temperature { get; set; }
+        public required double Weight { get; set; }
+        public required double Height { get; set; }
+        public required int SystolicPressure { get; set; }
+        public required int DiastolicPressure { get; set; }
+        public required int HeartRate { get; set; }
+        public required double Temperature { get; set; }
     }
 }

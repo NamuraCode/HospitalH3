@@ -8,7 +8,7 @@ namespace Hospital.domain.model
 {
     internal class Medication
     {
-        public string NameMedication { get; set; }
-        public string Dose { get; set; }
+        public required string NameMedication { get; set; }
+        public required string Dose { get; set; }
     }
 }

@@ -1,0 +1,17 @@
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.Form1.resources
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.csproj.GenerateResource.cache
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.GeneratedMSBuildEditorConfig.editorconfig
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.AssemblyInfoInputs.cache
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.AssemblyInfo.cs
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.csproj.CoreCompileInputs.cache
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.sourcelink.json
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\bin\Debug\net8.0-windows\Hospital.exe
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\bin\Debug\net8.0-windows\Hospital.deps.json
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\bin\Debug\net8.0-windows\Hospital.runtimeconfig.json
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\bin\Debug\net8.0-windows\Hospital.dll
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\bin\Debug\net8.0-windows\Hospital.pdb
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.dll
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\refint\Hospital.dll
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.pdb
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\Hospital.genruntimeconfig.cache
+D:\02_Projects\03_Programation\06_HerramientasProgramation\00_Hospital\Hospital\Hospital\obj\Debug\net8.0-windows\ref\Hospital.dll
