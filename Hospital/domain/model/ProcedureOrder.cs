@@ -8,5 +8,6 @@ namespace Hospital.domain.model
 {
     internal class ProcedureOrder
     {
+        public Procedure Procedure { get; set; }
     }
 }

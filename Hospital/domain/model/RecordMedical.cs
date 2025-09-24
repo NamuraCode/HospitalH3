@@ -8,5 +8,7 @@ namespace Hospital.domain.model
 {
     internal class RecordMedical
     {
+        public Medication Medicamento { get; set; }
+        public int Quantity { get; set; }
     }
 }

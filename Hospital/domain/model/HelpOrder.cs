@@ -8,5 +8,7 @@ namespace Hospital.domain.model
 {
     internal class HelpOrder
     {
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

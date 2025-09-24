@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class HelathInsurance
+    internal class HealthInsurance
     {
         public string Name { get; set; }
         public string NumberPolicy { get; set; }

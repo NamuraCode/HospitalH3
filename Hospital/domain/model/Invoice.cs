@@ -12,5 +12,7 @@ namespace Hospital.domain.model
         public Patient Patient { get; set; }
         public User Doctor { get; set; }
         public string Diagnosis { get; set; }
+
+        public int Price { get; set; }
     }
 }
