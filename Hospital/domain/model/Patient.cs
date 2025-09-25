@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.domain.model
 {
-    internal class Patient : User
+    internal class Patient : Person
     {
         public required HealthInsurance Seguro { get; set; }
         public required string Gender { get; set; }
