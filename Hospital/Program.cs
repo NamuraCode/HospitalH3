@@ -1,3 +1,6 @@
+using Hospital.infraestructure.config;
+using Hospital.infraestructure.GUI;
+
 namespace Hospital
 {
     internal static class Program
@@ -11,6 +14,7 @@ namespace Hospital
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            Config config = new Config();
             Application.Run(new Form1());
         }
     }

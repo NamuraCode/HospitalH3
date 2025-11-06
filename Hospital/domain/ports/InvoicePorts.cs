@@ -11,13 +11,13 @@ namespace Hospital.domain.ports
     {
         public void GenerateInvoice(Invoice invoice)
         {
-            // generar factura
+            // genera factura
         }
         public void SendInvoice()
         {
-            // enviar factura
+            // envia factura
         }
-        public List<Invoice> GetInvoicesByIdUser(int userId)
+        public List<Invoice> GetInvoicesByIdUser(ulong userId)
         {
             // reemplazar por la de la base de datos
             return new List<Invoice>();

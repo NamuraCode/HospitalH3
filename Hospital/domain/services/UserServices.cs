@@ -11,7 +11,12 @@ namespace Hospital.domain.services
 {
     internal class UserServices
     {
-        private UserPorts userPorts;
+        private UserPorts userPorts { get; set; }
+        public UserServices(UserPorts userPorts)
+        {
+            this.userPorts = userPorts;
+        }
+
         public void CreateUser(User user)
         {
             if(user != null)
