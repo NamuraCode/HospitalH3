@@ -9,7 +9,7 @@ namespace Hospital.domain.ports
 {
     internal interface UserPorts
     {
-        public bool FindUserById(int userId)
+        public bool FindUserById(ulong userId)
         {
             // guardar el usuario base de datos
             Console.WriteLine($"Usuario {userId} no existe.");
@@ -21,7 +21,7 @@ namespace Hospital.domain.ports
             Console.WriteLine($"Usuario {user.NameUser} guardado exitosamente.");
         }
 
-        public void DeleteUser(int userId)
+        public void DeleteUser(ulong userId)
         {
             // eliminar el usuario de la base de datos
             Console.WriteLine($"Usuario con ID {userId} eliminado exitosamente.");

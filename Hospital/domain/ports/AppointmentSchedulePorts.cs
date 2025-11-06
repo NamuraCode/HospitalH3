@@ -9,10 +9,10 @@ namespace Hospital.domain.ports
 {
     internal interface AppointmentSchedulePorts
     {
-        public bool FindAppointmentByDoctorAndTime(int doctorId, DateTime dateAppointment);
-        public List<Appointment> GetAppointmentsByPatient(int patientId);
+        public bool FindAppointmentByDoctorAndTime(ulong doctorId, DateTime dateAppointment);
+        public List<Appointment> GetAppointmentsByPatient(ulong patientId);
         public void ScheduleAppointment(Appointment appointment);
-        public void CancelAppointment(int patientId, int doctorId);
+        public void CancelAppointment(ulong patientId, ulong doctorId);
         public void UpdateAppointment();
     }
 }
