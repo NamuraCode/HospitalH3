@@ -31,7 +31,7 @@ namespace Hospital.infraestructure.adapters.output
             {
                 // Insert person
                 using (var command = new MySqlCommand(
-                    "INSERT INTO user (name, phone, document) VALUES (@name, @cellPhone, @document); SELECT LAST_INSERT_ID();",
+                    "INSERT INTO user (role, nameUser, password, name, email, phone, document) VALUES (@name, @cellPhone, @document); SELECT LAST_INSERT_ID();",
                     connection, transaction))
                 {
                     command.Parameters.AddWithValue("@role", user.Role);
