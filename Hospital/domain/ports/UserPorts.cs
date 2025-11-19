@@ -7,30 +7,11 @@ using Hospital.domain.model;
 
 namespace Hospital.domain.ports
 {
-    internal interface UserPorts
+    public interface UserPorts
     {
-        public bool FindUserById(ulong userId)
-        {
-            // guardar el usuario base de datos
-            Console.WriteLine($"Usuario {userId} no existe.");
-            return false;
-        }
-        public void SaveUser(User user)
-        {
-            // guardar el usuario base de datos
-            Console.WriteLine($"Usuario {user.NameUser} guardado exitosamente.");
-        }
-
-        public void DeleteUser(ulong userId)
-        {
-            // eliminar el usuario de la base de datos
-            Console.WriteLine($"Usuario con ID {userId} eliminado exitosamente.");
-        }
-
-        public void UpdateUser(User user)
-        {
-            // actualizar el usuario en la base de datos
-            Console.WriteLine($"Usuario {user.NameUser} actualizado exitosamente.");
-        }
+        public bool FindUserById(ulong userId);
+        public void SaveUser(User user);
+        public void DeleteUser(ulong userId);
+        public void UpdateUser(User user);
     }
 }

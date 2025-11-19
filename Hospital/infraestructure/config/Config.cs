@@ -17,11 +17,11 @@ namespace Hospital.infraestructure.config
     {
         public UserPorts UserPorts { get; private set; }
 
-        public UserServices UserServices { get; private set; }
+        public CreateUser createUser { get; private set; }
 
-        public AdminUseCase AdminUseCase { get; private set; }
+        public HumanResourcesUseCase humanResourcesUseCase{ get; private set; }
 
-        public UserInput UserInput { get; private set; }
+        public UserInputs UserInput { get; private set; }
 
         public UserBuilder UserBuilder { get; private set; }    
 
@@ -33,18 +33,20 @@ namespace Hospital.infraestructure.config
                 UserPorts = new MySqlUserPort();
 
                 //servicios de la aplicacion usuarios
-                UserServices = new UserServices(UserPorts);
+                createUser = new CreateUser(UserPorts);
 
                 //casos de uso
-                AdminUseCase = new AdminUseCase(UserServices);
+                humanResourcesUseCase = new HumanResourcesUseCase(new CreateUser(UserPorts));
 
                 UserBuilder = new UserBuilder();
 
-                UserInput = new UserInput(UserBuilder, AdminUseCase);
+                UserInput = new UserInputs(UserBuilder, humanResourcesUseCase);
             }
             catch (System.Exception ex)
             {
-                throw new System.Exception("Error al inicializar los puertos de la base de datos: " + ex.Message);
+                System.Windows.Forms.MessageBox.Show($"Error al inicializar la aplicación: {ex.Message}", "Error",
+                   System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                throw; 
             }
 
 

@@ -9,15 +9,17 @@ using Hospital.domain.model;
 
 namespace Hospital.application.adapters.input
 {
-    internal class UserInput
+    public class UserInputs
     {
-        private UserBuilder userBuilder { get; set; } 
-        private AdminUseCase adminUseCase { get; set; }
-        public UserInput(UserBuilder userBuilder, AdminUseCase adminUseCase)
+        private readonly UserBuilder userBuilder;
+        private readonly HumanResourcesUseCase humanResourcesUseCase;
+
+        public UserInputs(UserBuilder userBuilder, HumanResourcesUseCase humanResourcesUseCase)
         {
             this.userBuilder = userBuilder;
-            this.adminUseCase = adminUseCase;
+            this.humanResourcesUseCase = humanResourcesUseCase;
         }
+
         public void CreateUser(
             string role,
             string nameUser,
@@ -51,7 +53,7 @@ namespace Hospital.application.adapters.input
                 contactPhone,
                 contactEmail
             );
-            adminUseCase.CreateUserAdmin(user);
+            humanResourcesUseCase.CreateUser(user);
         }
     }
 }

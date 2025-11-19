@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Hospital.domain.model
 {
-    internal class User : Person
+    public class User : Person
     {
         public required string Role { get; set; }
         public required string NameUser { get; set; }

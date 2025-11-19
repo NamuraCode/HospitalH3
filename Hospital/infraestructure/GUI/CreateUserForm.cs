@@ -1,4 +1,5 @@
-﻿using Hospital.application.usecases;
+﻿using Hospital.application.adapters.input;
+using Hospital.application.usecases;
 using Hospital.infraestructure.config;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,11 @@ namespace Hospital.infraestructure.GUI
 {
     public partial class CreateUserForm : Form
     {
-        public CreateUserForm()
+        private readonly UserInputs userInputs;
+        public CreateUserForm(UserInputs userInputs)
         {
-        }
-
-        public CreateUserForm(AdminUseCase adminUseCase)
-        {
-            this.adminUseCase = adminUseCase ?? throw new ArgumentNullException(nameof(AdminUseCase));
+            this.userInputs = userInputs;
             InitializeComponent();
         }
-
     }
 }

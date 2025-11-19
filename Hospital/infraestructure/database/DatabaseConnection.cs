@@ -17,7 +17,7 @@ namespace Hospital.infraestructure.database
 
         private DatabaseConnection()
         {
-            connectionString = "Server=localhost;Port=3306;Database=hospital;User=root;Password=;";
+            connectionString = "Server=localhost;Port=3306;Database=Clinica;User=root;Password=;";
             threadLocalConnection = new ThreadLocal<MySqlConnection>();
         }
 
@@ -25,14 +25,14 @@ namespace Hospital.infraestructure.database
         {
             get
             {
-                lock (padlock)
+                if(instance == null)
                 {
-                    if (instance == null)
+                    lock (padlock)
                     {
-                        instance = new DatabaseConnection();
+                        instance ??= new DatabaseConnection();
                     }
-                    return instance;
                 }
+                return instance;
             }
         }
 
@@ -64,13 +64,23 @@ namespace Hospital.infraestructure.database
             }
         }
 
+        public void CloseConnection()
+        {
+            if (threadLocalConnection.Value != null)
+            {
+                threadLocalConnection.Value.Close();
+                threadLocalConnection.Value.Dispose();
+                threadLocalConnection.Value = null;
+            }
+        }
+
         private void CreateDatabase()
         {
-            string createDbConnectionString = "Server=localhost;Port=3306;Database=hospital;User=root;Password=;";
+            string createDbConnectionString = "Server=localhost;Port=3306;User=root;Password=;";
             using var connection = new MySqlConnection(createDbConnectionString);
-            tempConnectio.Open();
+            connection.Open();
 
-            using var command = new MySqlCommand(GetCreateDatabaseScript(), tempConnectio);
+            using var command = new MySqlCommand(GetCreateDatabaseScript(), connection);
             command.ExecuteNonQuery();
         }
 
@@ -81,11 +91,8 @@ namespace Hospital.infraestructure.database
                 CREATE DATABASE hospital;
                 USE hospital;
 
-                CREATE TABLE usuarios (
-                    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                    name_user VARCHAR(50) NOT NULL,
-                    password VARCHAR(255) NOT NULL,
-                    role VARCHAR(20) NOT NULL,
+                CREATE TABLE personas (
+                    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                     name VARCHAR(100) NOT NULL,
                     document BIGINT NOT NULL,
                     email VARCHAR(100) NOT NULL,
@@ -94,15 +101,21 @@ namespace Hospital.infraestructure.database
                     direction VARCHAR(255) NOT NULL,
                 );
 
-                CREATE TABLE contactoDeEmergencia (
-                    FOREIGN KEY (user_id) REFERENCES usuarios(id),
-                    contact_name VARCHAR(100) NOT NULL,
-                    contact_relation VARCHAR(50) NOT NULL,
-                    contact_phone VARCHAR(20) NOT NULL,
-                    contact_email VARCHAR(100) NOT NULL
+                CREATE TABLE usuarios (
+                    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                    FOREIGN KEY (id) REFERENCES personas(id) ON DELETE CASCADE,
+                    name_user VARCHAR(50) NOT NULL,
+                    password VARCHAR(255) NOT NULL,
+                    role VARCHAR(20) NOT NULL,
                 );
 
-               
+                CREATE TABLE contact_de_emergencia (
+                    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                    FOREIGN KEY (id) REFERENCES personas(id) ON DELETE CASCADE,
+                    name VARCHAR(100) NOT NULL,
+                    relation VARCHAR(50) NOT NULL,
+                    phone VARCHAR(20) NOT NULL,
+                );
             ";
         }
 

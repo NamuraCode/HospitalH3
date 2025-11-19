@@ -15,7 +15,7 @@ namespace Hospital
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Config config = new Config();
-            Application.Run(new Form1());
+            Application.Run(new CreateUserForm(config.UserInput));
         }
     }
 }

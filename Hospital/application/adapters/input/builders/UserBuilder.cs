@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.application.adapters.input.builders
 {
-    internal class UserBuilder
+    public class UserBuilder
     {
         private PersonValidator personValidator;
         private ContactValidator contactValidator;
@@ -47,7 +47,7 @@ namespace Hospital.application.adapters.input.builders
                 NameUser = UserValidator.ValidateUserName(nameUser),
                 Password = UserValidator.ValidatePassword(password),
                 Name = PersonValidator.ValidateName(name),
-                Id = GenerateUniqueId(),
+                Id = PersonValidator.ValidateId(document),
                 Email = PersonValidator.ValidateEmail(email),
                 Phone = PersonValidator.ValidatePhone(phone),
                 document = PersonValidator.ValidateId(document),
@@ -58,16 +58,9 @@ namespace Hospital.application.adapters.input.builders
                 Relation = ContactValidator.RelationValidator(contactRelation),
                 Name = ContactValidator.NameValidator(contactName),
                 PhoneNumber = ContactValidator.PhoneNumberValidator(contactPhone),
-                Email = ContactValidator.EmailValidator(contactEmail)
                 }
             };
             return user;
         }
-        private static ulong GenerateUniqueId()
-        {
-            var bytes = Guid.NewGuid().ToByteArray();
-            return BitConverter.ToUInt64(bytes, 0);
-        }
-
     }
 }
