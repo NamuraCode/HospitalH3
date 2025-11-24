@@ -81,5 +81,15 @@ namespace Hospital.application.adapters.input.validators
 
             return password;
         }
+
+        public string PhoneNumberValidator(string phoneNumber)
+        {
+            string phoneNumberValidated = StringNotNullOrEmpty(phoneNumber, "Número de Teléfono");
+            if (!Regex.IsMatch(phoneNumberValidated, @"^\+?[1-9]\d{1,14}$"))
+            {
+                throw new ArgumentException("El número de teléfono no es válido.");
+            }
+            return phoneNumber;
+        }
     }
 }

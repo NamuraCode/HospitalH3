@@ -11,5 +11,6 @@ namespace Hospital.domain.model
     {
         public required HealthInsurance Seguro { get; set; }
         public required string Gender { get; set; }
+        public required Contact EmergencyContact { get; set; }
     }
 }

@@ -17,10 +17,15 @@ namespace Hospital.infraestructure.adapters.output
         private readonly DatabaseConnection dbConnection;
         private bool disposed = false;
 
+        public MySqlUserPort()
+        {
+            dbConnection = DatabaseConnection.Instance;
+        }
+
         public void SaveUser(User user)
         {
             if (user == null)
-                throw new ArgumentException("Socio no puede ser null");
+                throw new ArgumentException("Usuario no puede ser null");
 
             ValidateUser(user);
 
@@ -29,37 +34,36 @@ namespace Hospital.infraestructure.adapters.output
 
             try
             {
-                // Insert person
+                // Insert persona
+                ulong idPersona;
                 using (var command = new MySqlCommand(
-                    "INSERT INTO user (role, nameUser, password, name, email, phone, document) VALUES (@name, @cellPhone, @document); SELECT LAST_INSERT_ID();",
-                    connection, transaction))
-                {
-                    command.Parameters.AddWithValue("@role", user.Role);
-                    command.Parameters.AddWithValue("@nameUser", user.NameUser);
-                    command.Parameters.AddWithValue("@password", user.Password);
-                    command.Parameters.AddWithValue("@name", user.Name);
-                    command.Parameters.AddWithValue("@email", user.Email);
-                    command.Parameters.AddWithValue("@document", user.Document);
-                    command.Parameters.AddWithValue("@phone", user.Phone);
-                    command.Parameters.AddWithValue("@dateBirth", user.DateBirth);
-                    command.Parameters.AddWithValue("@direction", user.Direction);
-                    user.Id = Convert.ToUInt64(command.ExecuteScalar());
-                }
-       
-                // Insert emergency Contact
-                using (var command = new MySqlCommand(
-                    "INSERT INTO contact (name, email, document, phone, dateBirth, direction ) VALUES (@name, @email, @document, @phone, @dateBirth, @direction); SELECT LAST_INSERT_ID();",
+                    @"INSERT INTO personas (name, email, document, phone, date_birth, direction) 
+                     VALUES (@name, @email, @document, @phone, @date_birth, @direction);
+                     SELECT LAST_INSERT_ID();",
                     connection, transaction))
                 {
                     command.Parameters.AddWithValue("@name", user.Name);
                     command.Parameters.AddWithValue("@email", user.Email);
-                    command.Parameters.AddWithValue("@phone", user.Phone);
                     command.Parameters.AddWithValue("@document", user.Document);
-                    command.Parameters.AddWithValue("@dateBirth", user.DateBirth);
+                    command.Parameters.AddWithValue("@phone", user.Phone);
+                    command.Parameters.AddWithValue("@date_birth", user.DateBirth);
                     command.Parameters.AddWithValue("@direction", user.Direction);
-                    user.Id = Convert.ToUInt64(command.ExecuteScalar());
+                    idPersona = Convert.ToUInt64(command.ExecuteScalar());
                 }
 
+                // Insert usuarios
+                using (var command = new MySqlCommand(
+                     @"INSERT INTO usuarios (id_person, role, name_user, password) 
+                      VALUES (@id_person, @role, @name_user, @password);
+                      SELECT LAST_INSERT_ID();",
+                     connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@id_person", idPersona);
+                    command.Parameters.AddWithValue("@role", user.Role);
+                    command.Parameters.AddWithValue("@name_user", user.NameUser);
+                    command.Parameters.AddWithValue("@password", user.Password);
+                    user.Id = Convert.ToUInt64(command.ExecuteScalar());
+                }
 
                 transaction.Commit();
             }
@@ -100,16 +104,43 @@ namespace Hospital.infraestructure.adapters.output
 
         private void ValidateUser(User user)
         {
-            if (string.IsNullOrWhiteSpace(user.Name))
-                throw new ArgumentException("El nombre es requerido");
-            if (user.Document <= 0)
-                throw new ArgumentException("El documento es inválido");
-            if (user.Phone <= 0)
-                throw new ArgumentException("El número de celular es inválido");
-            if (string.IsNullOrWhiteSpace(user.Name))
-                throw new ArgumentException("El nombre de usuario es requerido");
-            if (string.IsNullOrWhiteSpace(user.Password))
-                throw new ArgumentException("La contraseña es requerida");
+            if (string.IsNullOrWhiteSpace(user.Name)) throw new ArgumentException("Nombre requerido");
+            if (user.Document <= 0) throw new ArgumentException("Documento inválido");
+            if (string.IsNullOrWhiteSpace(user.Phone)) throw new ArgumentException("Teléfono inválido");
+            if (string.IsNullOrWhiteSpace(user.NameUser)) throw new ArgumentException("Usuario requerido");
+            if (string.IsNullOrWhiteSpace(user.Password)) throw new ArgumentException("Contraseña requerida");
+            if (string.IsNullOrWhiteSpace(user.Role)) throw new ArgumentException("Rol requerido");
+        }
+
+        public bool FindUserById(ulong userId)
+        {
+            using var conn = dbConnection.GetConnection();
+            using var cmd = new MySqlCommand("SELECT 1 FROM usuarios WHERE id = @id LIMIT 1;", conn);
+            cmd.Parameters.AddWithValue("@id", userId);
+            var result = cmd.ExecuteScalar();
+            return result != null;
+        }
+
+        public void DeleteUser(ulong userId)
+        {
+            using var conn = dbConnection.GetConnection();
+            using var cmd = new MySqlCommand("DELETE FROM usuarios WHERE id = @id;", conn);
+            cmd.Parameters.AddWithValue("@id", userId);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void UpdateUser(User user)
+        {
+            if (user == null) throw new ArgumentNullException(nameof(user));
+            using var conn = dbConnection.GetConnection();
+            using var cmd = new MySqlCommand(@"
+                UPDATE usuarios SET name_user = @name_user, password = @password, role = @role
+                WHERE id = @id;", conn);
+            cmd.Parameters.AddWithValue("@name_user", user.NameUser);
+            cmd.Parameters.AddWithValue("@password", user.Password);
+            cmd.Parameters.AddWithValue("@role", user.Role);
+            cmd.Parameters.AddWithValue("@id", user.Id);
+            cmd.ExecuteNonQuery();
         }
 
         public void Dispose()
@@ -130,24 +161,6 @@ namespace Hospital.infraestructure.adapters.output
             }
         }
 
-        public bool FindUserById(ulong userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteUser(ulong userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        ~MySqlUserPort()
-        {
-            Dispose(false);
-        }
+        ~MySqlUserPort() => Dispose(false);
     }
 }

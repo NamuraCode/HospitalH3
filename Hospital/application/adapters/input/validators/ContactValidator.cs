@@ -29,16 +29,6 @@ namespace Hospital.application.adapters.input.validators
             return name;
         }
 
-        public string PhoneNumberValidator(string phoneNumber)
-        {
-            string phoneNumberValidated = StringNotNullOrEmpty(phoneNumber, "Número de Teléfono");
-            if (!Regex.IsMatch(phoneNumberValidated, @"^\+?[1-9]\d{1,14}$"))
-            {
-                throw new ArgumentException("El número de teléfono no es válido.");
-            }
-            return phoneNumber;
-        }
-
         public string EmailValidator(string email)
         {
             string emailValidated = StringNotNullOrEmpty(email, "Correo Electrónico");

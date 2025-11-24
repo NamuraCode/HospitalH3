@@ -22,10 +22,7 @@ namespace Hospital.application.adapters.input.validators
         {
             return StringNotNullOrEmpty(email, "Correo Electronico");
         }
-        public int ValidatePhone(string phone)
-        {
-            return IntNotNullOrEmpty(phone, "Telefono");
-        }
+    
         public DateTime ValidateAge(string age)
         {
             string date = StringNotNullOrEmpty(age, "Edad");

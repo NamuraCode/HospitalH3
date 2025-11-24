@@ -25,16 +25,11 @@ namespace Hospital.application.adapters.input
             string nameUser,
             string password,
             string name,
-            string id,
             string document,
             string email,
             string phone,
             string age,
-            string direction,
-            string contactName,
-            string contactRelation,
-            string contactPhone,
-            string contactEmail
+            string direction
         )
         {
             User user = userBuilder.create(
@@ -42,16 +37,12 @@ namespace Hospital.application.adapters.input
                 nameUser,
                 password,
                 name,
-                id,
+                //id,
                 document,
                 email,
                 phone,
                 age,
-                direction,
-                contactName,
-                contactRelation,
-                contactPhone,
-                contactEmail
+                direction
             );
             humanResourcesUseCase.CreateUser(user);
         }
